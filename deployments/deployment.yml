@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-producer
+  namespace: kaushiksen1984-dev
+spec:
+  selector:
+    matchLabels:
+      app: kafka-producer
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: kafka-producer
+    spec:
+      containers:
+        - name: kafka-producer
+          image: >-
+            kaushiksen1984/docker-kafka-producer:latest
+          ports:
+            - containerPort: 8080
